@@ -76,4 +76,5 @@ module "gke" {
   master_ipv4_cidr_block     = var.master_ipv4_cidr_block
   master_authorized_networks = var.master_authorized_networks
   remove_default_node_pool   = var.remove_default_node_pool
+  node_pools                 = var.node_pools
 }
