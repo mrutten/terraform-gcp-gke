@@ -93,6 +93,12 @@ variable "master_authorized_networks" {
   default = []
 }
 
+variable "cluster_ipv4_cidr" {
+  description = "The IP address range of the kubernetes pods in this cluster. Default is an automatically assigned CIDR."
+  type        = string
+  default     = null
+}
+
 variable "node_pools" {
   description = "List of maps containing node pools."
   type        = list(map(any))

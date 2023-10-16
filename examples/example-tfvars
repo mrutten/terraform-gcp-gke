@@ -1,0 +1,94 @@
+/******************************************
+	General arguments
+ *****************************************/
+billing_account = "<BILLING_ACCOUNT_ID>"
+org_id          = <ORGANISATION_ID>
+host_project_id = "<HOST_PROJECT_ID>"
+project_id      = "<PROJECT_ID>"
+project_name    = "<PROJECt_NAME>"
+region          = "<REGION>"
+zones           = ["<ZONE>"]
+
+/******************************************
+	GKE arguments
+ *****************************************/
+network                = "<NETWORK>"
+subnetwork             = "<SUBNETWORK>"
+cluster_name           = "<CLUSTER_NAME>"
+ip_range_pods          = "<POD_RANGE_NAME>"
+ip_range_services      = "<SERVICE_RANGE_NAME>"
+master_ipv4_cidr_block = "<MASTER_IP_CIDR_BLOCK>"
+cluster_ipv4_cidr      = "<CLUSTER_IP_CIDR_BLOCK>"
+service_account_name   = "<NODE_SERVICE_ACCOUNT_NAME>"
+master_authorized_networks = [
+  {
+    cidr_block   = "<CIDR_BLOCK>"
+    display_name = "<NAME>"
+  },
+  {
+    cidr_block   = "<CIDR_BLOCK>"
+    display_name = "<NAME>"
+  },
+]
+
+node_pools = [
+  {
+    name            = "<NODE_POOL_NAME>"
+    machine_type    = "<MACHINE_TYPE>"
+    node_locations  = "<ZONES | REGIONS>"
+    min_count       = <MIN_COUNT>
+    max_count       = <MAX_COUNT>
+    local_ssd_count = <LOCAL_SSD_COUNT>
+    spot            = <SPOT_BOOL>
+    disk_size_gb    = <DISK_SIZE_IN_GB>
+    disk_type       = "<DISK_TYPE>"
+    image_type      = "<IMAGE_TYPE>"
+    enable_gcfs     = <GCFS_BOOL>
+    enable_gvnic    = <GVNIC_BOOL>
+    logging_variant = "<LOGGING_VARIANT>"
+    auto_repair     = <AUTO_REPAIR_BOOL>
+    auto_upgrade    = <AUTO_UPGRADE_BOOL>
+    service_account = "<NODE_SERVICE_ACCOUNT>"
+    preemptible     = <PREEMPTIBLE_BOOL>
+    autoscaling     = <AUTOSCALING_BOOL>
+  },
+]
+
+node_pools_oauth_scopes = {
+  all = [
+    "https://www.googleapis.com/auth/logging.write",
+    "https://www.googleapis.com/auth/monitoring",
+  ]
+}
+
+node_pools_labels = {
+  all = {}
+  default-node-pool = {
+    default-node-pool = true
+  }
+}
+
+node_pools_metadata = {
+  all = {}
+  default-node-pool = {
+    node-pool-metadata-custom-value = "node-pool"
+  }
+}
+
+node_pools_taints = {
+  all = []
+  default-node-pool = [
+    {
+      key    = "default-node-pool"
+      value  = true
+      effect = "PREFER_NO_SCHEDULE"
+    },
+  ]
+}
+
+node_pools_tags = {
+  all = []
+  default-node-pool = [
+    "default-node-pool",
+  ]
+}
