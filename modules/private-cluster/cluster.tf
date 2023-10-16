@@ -262,7 +262,7 @@ resource "google_container_cluster" "primary" {
 
     node_config {
       image_type       = lookup(var.node_pools[0], "image_type", "COS_CONTAINERD")
-      machine_type     = lookup(var.node_pools[0], "machine_type", "e2-small")
+      machine_type     = lookup(var.node_pools[0], "machine_type", "e2-medium")
       min_cpu_platform = lookup(var.node_pools[0], "min_cpu_platform", "")
       dynamic "gcfs_config" {
         for_each = lookup(var.node_pools[0], "enable_gcfs", false) ? [true] : []
