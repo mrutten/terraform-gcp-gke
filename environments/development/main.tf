@@ -7,19 +7,6 @@ provider "google" {
 }
 
 /******************************************
-	Project configuration
- *****************************************/
-resource "google_project" "project" {
-  name       = var.project_name
-  project_id = var.project_id
-
-  auto_create_network = false
-  billing_account     = var.billing_account
-  folder_id           = null
-  org_id              = var.org_id
-}
-
-/******************************************
 	Service configuration
  *****************************************/
 module "host-project-services" {
